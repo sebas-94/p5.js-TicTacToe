@@ -49,6 +49,19 @@ function draw2dArray(array) {
         }
     }
 
+
+    let result = checkWinner();
+  if (result != null) {
+    noLoop();
+    let resultP = createP('');
+    resultP.style('font-size', '32pt');
+    if (result == 'tie') {
+      resultP.html('Tie!');
+    } else {
+      resultP.html(`${result} wins!`);
+    }
+  }
+
 }
 
 
@@ -81,23 +94,12 @@ function mouseClicked() {
         click = [x, y];
 
         if (board[x][y] == '') {
-
             if (turn) {
                 board[x][y] = ('X');
             } else {
                 board[x][y] = ('O');
-            } turn = !turn;
-
-
-            if(checkWinner() != null){
-                alert(checkWinner());
-            }
-
+            } turn = !turn;  
         }
-
-
-
-
 
     }
 
